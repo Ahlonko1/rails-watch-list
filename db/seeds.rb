@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "faker"
+
+5.times do
+  movie = Movie.new(
+    title: Faker::Movies::StarWars.character,
+    overview: Faker::Movies::StarWars.quote,
+    poster_url: "https://picsum.photos/seed/picsum/200/300",
+    rating: rand(1..10)
+  )
+  movie.save!
+end
